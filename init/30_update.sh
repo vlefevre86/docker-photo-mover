@@ -4,3 +4,4 @@
 
 cd /app/photo-mover
 git pull
+npm install
