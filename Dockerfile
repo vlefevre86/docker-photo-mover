@@ -7,9 +7,9 @@ apt-get install $APTLIST -qy && \
 apt-get clean && rm -rf /tmp/* /var/lib/apt/lists/* /var/tmp/*
 
 #Adding Custom files
-VOLUME /tasks /orig /dest
 ADD /tasks /tasks
 ADD init/ /etc/my_init.d/
+VOLUME /tasks /orig /dest
 RUN chmod -v +x /etc/my_init.d/*.sh /tasks/*.sh
 
 # Add crontab file in the cron directory
