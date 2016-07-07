@@ -6,15 +6,20 @@ RUN apt-get update -q && \
 apt-get install $APTLIST -qy && \
 apt-get clean && rm -rf /tmp/* /var/lib/apt/lists/* /var/tmp/*
 
-VOLUME /tasks /orig /dest
-RUN mkdir -p /tasks/{15min,hourly,daily,weekly,monthly}
-
 #Adding Custom files
-ADD init/ /etc/my_init.d/
-RUN chmod -v +x /etc/my_init.d/*.sh
-#RUN /etc/my_init.d/update.sh
-
 VOLUME /tasks /orig /dest
-RUN mkdir -p /tasks/{15min,hourly,daily,weekly,monthly}
+ADD /tasks /tasks
+ADD init/ /etc/my_init.d/
+RUN chmod -v +x /etc/my_init.d/*.sh /tasks/*.sh
 
-CMD ["crond", "-f", "-d", "8"]
+# Add crontab file in the cron directory
+ADD crontab /etc/cron.d/hello-cron
+ 
+# Give execution rights on the cron job
+RUN chmod 0644 /etc/cron.d/hello-cron
+ 
+# Create the log file to be able to run tail
+RUN touch /var/log/cron.log
+ 
+# Run the command on container startup
+CMD cron && tail -f /var/log/cron.log
