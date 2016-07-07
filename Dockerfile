@@ -1,6 +1,6 @@
 FROM linuxserver/baseimage
 
-ENV APTLIST="nodejs git"
+ENV APTLIST="nodejs git fcron"
 
 RUN apt-get update -q && \
 apt-get install $APTLIST -qy && \
