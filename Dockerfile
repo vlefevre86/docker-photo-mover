@@ -3,7 +3,7 @@ FROM alpine:3.3
 RUN apk add --update --no-cache nodejs git
 
 #Adding Custom files
-ADD init/ /etc/my_init.d/
+ADD init/update.sh /etc/my_init.d/update.sh
 RUN chmod -v +x /etc/my_init.d/*.sh
 RUN /etc/my_init.d/update.sh
 
