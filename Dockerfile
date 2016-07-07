@@ -1,6 +1,6 @@
-FROM linuxserver/baseimage
+FROM node:0.10.46
 
-ENV APTLIST="nodejs git cron npm"
+ENV APTLIST="git cron"
 
 RUN apt-get update -q && \
 apt-get install $APTLIST -qy && \
