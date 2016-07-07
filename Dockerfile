@@ -8,6 +8,6 @@ RUN chmod -v +x /etc/my_init.d/*.sh
 RUN /etc/my_init.d/update.sh
 
 VOLUME /tasks /orig /dest
-RUN mkdir -p tasks/{15min,hourly,daily,weekly,monthly}
+RUN mkdir -p /tasks/{15min,hourly,daily,weekly,monthly}
 
 CMD ["crond", "-f", "-d", "8"]
