@@ -1,5 +1,5 @@
 #!/bin/bash
 
 cd /app/photo-mover
-nodejs app.js --origin /orig/ --destination /dest/
+node app.js --origin /orig/ --destination /dest/
 
