@@ -9,7 +9,7 @@ apt-get clean && rm -rf /tmp/* /var/lib/apt/lists/* /var/tmp/*
 #Adding Custom files
 ADD tasks/ /tasks/
 ADD init/ /etc/my_init.d/
-VOLUME /tasks /orig /dest
+VOLUME /orig /dest
 RUN chmod -v +x /etc/my_init.d/*.sh /tasks/*.sh
 RUN /etc/my_init.d/30_update_Photo-Mover.sh
 
