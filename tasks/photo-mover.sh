@@ -1,4 +1,4 @@
 #!/bin/bash
 
 cd /app/photo-mover
-echo test
+node app.js --origin /orig/ -- destination /dest/
