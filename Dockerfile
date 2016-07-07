@@ -12,7 +12,7 @@ RUN mkdir -p /tasks/{15min,hourly,daily,weekly,monthly}
 #Adding Custom files
 ADD init/ /etc/my_init.d/
 RUN chmod -v +x /etc/my_init.d/*.sh
-RUN /etc/my_init.d/update.sh
+#RUN /etc/my_init.d/update.sh
 
 VOLUME /tasks /orig /dest
 RUN mkdir -p /tasks/{15min,hourly,daily,weekly,monthly}
