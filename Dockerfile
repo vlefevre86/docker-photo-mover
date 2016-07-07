@@ -1,9 +1,13 @@
-FROM alpine:3.3
+FROM linuxserver/baseimage
 
-RUN apk add --update --no-cache nodejs git
+ENV APTLIST="nodejs git"
+
+RUN apt-get update -q && \
+apt-get install $APTLIST -qy && \
+apt-get clean && rm -rf /tmp/* /var/lib/apt/lists/* /var/tmp/*
 
 #Adding Custom files
-ADD init/update.sh /etc/my_init.d/update.sh
+ADD init/ /etc/my_init.d/
 RUN chmod -v +x /etc/my_init.d/*.sh
 RUN /etc/my_init.d/update.sh
 
